@@ -51,10 +51,6 @@
 		 parseContent(FileContent);
 	   };
 	   reader.readAsText(selectedFile, 'CP1251');
-	   /*strings = text.split("\n");
-	   for (var i in strings) {
-			alert(strings[i]);
-	   }*/
 	 }
 
 	function parseContent(content) {
@@ -64,14 +60,7 @@
 			var res = getNumOfPoints(strings[i]);
 			song = res[0].trim();
 			points = res[1];
-			//alert(song);trim()
-			//if (song[-1] == "&nbsp;"){
-			//	alert(-1);
-			//	song = song.substring(0, song.length - 1)
-			//}
-			//alert(song + points);
-			
-			
+				
 			if (points !== 0) {
 				if (resMap.has(song)){
 					resMap.set(song, resMap.get(song) + points);
@@ -80,8 +69,6 @@
 				}
 			}
 		}
-		//alert(Array.from(resMap.keys()));
-		//alert(Array.from(resMap.values()));
 		
 		resMap[Symbol.iterator] = function* () {
 			yield* [...this.entries()].sort((a, b) => b[1] - a[1]);
@@ -91,7 +78,6 @@
 			i += 1;
 			document.getElementById('out').innerHTML += i + ') ' + key + ' ' + value + '\n';
 		}
-		//document.getElementById('result').innerHTML = resMap.keys();
 	 }
 
 	</script>
@@ -104,13 +90,9 @@
 		<div class="col-md-4">
 			<div class="panel panel-default">
 				<div class="panel-heading">Файл с бюллетенями</div>
-				<span class="btn btn-default btn-file btn-block">  <!--btn-primary-->
+				<span class="btn btn-default btn-file btn-block btn-primary">  <!--btn-primary-->
 					Выбрать файл...<input type="file" id="inputFile" name="files[]" onchange="readFile()"/>
 				</span>
-				
-				<!--<div class="panel-heading">Выберите файл с бюллетенями</div>
-				<input type="file" id="inputFile" name="files[]" onchange="readFile()" />
-				<output id="list"></output>-->
 			</div>
 		</div>
 		<div class="col-md-4">
